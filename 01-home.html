@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI나침반 — AI 비즈니스 전환 교육</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+:root {
+  --navy:#0D1B35; --navy2:#1B2F55; --navy3:#263D6B;
+  --gold:#C9A84C; --gold2:#E8C97A; --gold3:#FDF3DC;
+  --cream:#FAFAF7; --smoke:#F2F1EE;
+  --ink:#1A1A1A; --gray:#6B6B6B;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--cream);color:var(--ink);-webkit-font-smoothing:antialiased}
+
+/* ── NAV ── */
+nav{background:var(--navy);padding:0 40px;height:64px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.nav-logo-mark{width:32px;height:32px;background:var(--gold);border-radius:6px;display:grid;place-items:center;font-weight:900;font-size:14px;color:var(--navy);font-family:'Playfair Display',serif}
+.nav-logo-text{color:#fff;font-weight:700;font-size:17px;letter-spacing:-0.02em}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.7);text-decoration:none;font-size:14px;font-weight:500;transition:.2s}
+.nav-links a:hover{color:#fff}
+.nav-cta{background:var(--gold);color:var(--navy);padding:9px 22px;border-radius:6px;font-size:14px;font-weight:700;text-decoration:none;transition:.2s}
+.nav-cta:hover{background:var(--gold2)}
+
+/* ── HERO ── */
+.hero{background:var(--navy);padding:100px 40px 80px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(201,168,76,.15),transparent);pointer-events:none}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;padding:6px 18px;border:1px solid rgba(201,168,76,.4);border-radius:100px;margin-bottom:32px}
+.hero-tag-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero-tag span{font-size:12px;color:var(--gold);font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(36px,5vw,62px);color:#fff;line-height:1.15;margin-bottom:8px;letter-spacing:-0.02em}
+.hero h1 em{color:var(--gold);font-style:normal}
+.hero-sub{font-size:20px;color:rgba(255,255,255,.65);margin-bottom:48px;font-weight:400;max-width:520px;margin-left:auto;margin-right:auto;margin-top:16px}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:16px 36px;background:var(--gold);color:var(--navy);font-weight:700;font-size:16px;border-radius:8px;text-decoration:none;transition:.2s;border:none;cursor:pointer}
+.btn-primary:hover{background:var(--gold2);transform:translateY(-2px)}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;padding:15px 34px;background:transparent;color:#fff;font-weight:600;font-size:16px;border-radius:8px;border:1.5px solid rgba(255,255,255,.3);text-decoration:none;transition:.2s}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+.hero-stats{display:flex;justify-content:center;gap:48px;margin-top:72px;padding-top:40px;border-top:1px solid rgba(255,255,255,.1);flex-wrap:wrap}
+.stat-item{text-align:center}
+.stat-num{font-family:'Playfair Display',serif;font-size:40px;color:var(--gold);font-weight:700;line-height:1}
+.stat-label{font-size:13px;color:rgba(255,255,255,.5);margin-top:6px}
+
+/* ── SECTION ── */
+section{padding:88px 40px;max-width:1080px;margin:0 auto}
+.section-label{font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(28px,3.5vw,44px);letter-spacing:-0.02em;line-height:1.2;margin-bottom:16px}
+.section-desc{font-size:17px;color:var(--gray);max-width:560px;line-height:1.8}
+
+/* ── 3가지 전환 ── */
+.pain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:48px}
+.pain-card{background:#fff;border:1px solid rgba(0,0,0,.07);border-radius:20px;padding:36px 32px;position:relative;overflow:hidden;transition:.25s}
+.pain-card:hover{box-shadow:0 12px 40px rgba(0,0,0,.1);transform:translateY(-3px)}
+.pain-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.pain-card.c1::before{background:linear-gradient(90deg,#C9A84C,#E8C97A)}
+.pain-card.c2::before{background:linear-gradient(90deg,#4C6EC9,#7A9AE8)}
+.pain-card.c3::before{background:linear-gradient(90deg,#4CC98E,#7AE8B8)}
+.pain-num{font-family:'Playfair Display',serif;font-size:48px;color:rgba(0,0,0,.06);font-weight:700;line-height:1;margin-bottom:8px}
+.pain-q{font-size:15px;color:var(--gray);margin-bottom:16px;font-style:italic}
+.pain-arrow{font-size:22px;color:var(--gold);margin-bottom:8px}
+.pain-a{font-size:17px;font-weight:700;color:var(--navy);line-height:1.45}
+
+/* ── 과정 카드 ── */
+.courses{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:28px;margin-top:48px}
+.course-card{border-radius:20px;overflow:hidden;text-decoration:none;display:block;transition:.25s;border:1px solid rgba(0,0,0,.08)}
+.course-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,0,0,.12)}
+.course-header{padding:36px 32px;display:flex;align-items:flex-start;justify-content:space-between}
+.course-1d{background:var(--navy)}
+.course-5d{background:#1A3A1A}
+.course-label{display:inline-block;padding:4px 12px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px}
+.course-1d .course-label{background:rgba(201,168,76,.2);color:var(--gold)}
+.course-5d .course-label{background:rgba(76,201,142,.2);color:#4CC98E}
+.course-title{font-family:'Playfair Display',serif;font-size:26px;color:#fff;line-height:1.2;margin-bottom:8px}
+.course-sub{font-size:14px;color:rgba(255,255,255,.55)}
+.course-price{text-align:right}
+.course-price-num{font-family:'Playfair Display',serif;font-size:28px;color:var(--gold);font-weight:700}
+.course-price-unit{font-size:13px;color:rgba(255,255,255,.5)}
+.course-body{background:#fff;padding:28px 32px}
+.course-features{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
+.course-features li{display:flex;align-items:center;gap:10px;font-size:15px;color:var(--gray)}
+.course-features li::before{content:'✓';width:20px;height:20px;border-radius:50%;background:var(--smoke);display:grid;place-items:center;font-size:11px;font-weight:700;color:var(--navy);flex-shrink:0}
+.course-link{display:flex;align-items:center;gap:6px;font-size:14px;font-weight:700;color:var(--navy);text-decoration:none}
+.course-link::after{content:'→';transition:.2s}
+.course-card:hover .course-link::after{transform:translateX(4px)}
+
+/* ── 프로세스 ── */
+.process{background:var(--navy);border-radius:24px;padding:56px 48px;margin-top:88px}
+.process-title{font-family:'Playfair Display',serif;font-size:32px;color:#fff;margin-bottom:8px}
+.process-sub{font-size:15px;color:rgba(255,255,255,.5);margin-bottom:48px}
+.process-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:32px;position:relative}
+.process-steps::before{content:'';position:absolute;top:20px;left:20px;right:20px;height:1px;background:rgba(255,255,255,.1)}
+.step{position:relative}
+.step-num{width:40px;height:40px;border-radius:50%;background:var(--gold);display:grid;place-items:center;font-weight:700;font-size:15px;color:var(--navy);margin-bottom:20px;position:relative;z-index:1}
+.step-title{font-size:16px;font-weight:700;color:#fff;margin-bottom:6px}
+.step-desc{font-size:13px;color:rgba(255,255,255,.45);line-height:1.6}
+
+/* ── 핵심 철학 ── */
+.philosophy{background:var(--gold3);border-radius:24px;padding:64px;text-align:center;border:1px solid rgba(201,168,76,.2)}
+.philosophy-quote{font-family:'Playfair Display',serif;font-size:clamp(22px,3vw,36px);color:var(--navy);line-height:1.4;margin-bottom:24px}
+.philosophy-quote em{color:var(--gold);font-style:normal}
+.philosophy-author{font-size:14px;color:var(--gray);font-weight:500}
+
+/* ── CTA ── */
+.cta-section{background:var(--navy);border-radius:24px;padding:72px 48px;text-align:center;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 80% at 50% 100%,rgba(201,168,76,.12),transparent);pointer-events:none}
+.cta-title{font-family:'Playfair Display',serif;font-size:clamp(28px,3.5vw,46px);color:#fff;margin-bottom:16px}
+.cta-sub{font-size:17px;color:rgba(255,255,255,.55);margin-bottom:40px;max-width:480px;margin-left:auto;margin-right:auto}
+
+/* ── FOOTER ── */
+footer{background:var(--navy);padding:48px 40px;text-align:center}
+.footer-logo{font-family:'Playfair Display',serif;font-size:22px;color:var(--gold);margin-bottom:12px}
+.footer-copy{font-size:13px;color:rgba(255,255,255,.3)}
+
+/* ── 애니 ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.fade-up{animation:fadeUp .6s ease both}
+.d1{animation-delay:.1s}.d2{animation-delay:.2s}.d3{animation-delay:.3s}.d4{animation-delay:.4s}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <div class="nav-logo-mark">AI</div>
+    <span class="nav-logo-text">AI나침반</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="02-seminar.html">설명회</a></li>
+    <li><a href="03-1day.html">1Day</a></li>
+    <li><a href="04-5day.html">5Day</a></li>
+    <li><a href="05-hub.html">수강생 허브</a></li>
+  </ul>
+  <a href="02-seminar.html" class="nav-cta">무료 설명회 신청 →</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag fade-up">
+    <div class="hero-tag-dot"></div>
+    <span>2026 최신 커리큘럼</span>
+  </div>
+  <h1 class="fade-up d1">
+    수업이 끝나는 날이<br><em>시작일</em>입니다
+  </h1>
+  <p class="hero-sub fade-up d2">
+    소상공인·1인기업을 위한 AI 비즈니스 전환 교육.<br>
+    수업 중에 이미 실제 사업에 배포됩니다.
+  </p>
+  <div class="hero-btns fade-up d3">
+    <a href="02-seminar.html" class="btn-primary">무료 설명회 신청 →</a>
+    <a href="03-1day.html" class="btn-outline">1Day 과정 보기</a>
+  </div>
+  <div class="hero-stats fade-up d4">
+    <div class="stat-item">
+      <div class="stat-num">99<span style="font-size:24px">만</span></div>
+      <div class="stat-label">1Day 수강료</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">3</div>
+      <div class="stat-label">보장 산출물</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">90</div>
+      <div class="stat-label">일 실행 로드맵</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">0</div>
+      <div class="stat-label">코딩 필요</div>
+    </div>
+  </div>
+</div>
+
+<!-- 3가지 문제 -->
+<section>
+  <div class="section-label">Why This Works</div>
+  <h2 class="section-title">기존 AI 교육이<br>실무에 안 착지되는 이유</h2>
+  <p class="section-desc">이 3가지 문제가 해결돼야 진짜 변화가 생깁니다.</p>
+  <div class="pain-grid">
+    <div class="pain-card c1 fade-up">
+      <div class="pain-num">01</div>
+      <div class="pain-q">"수업용 예제로 연습했어요"</div>
+      <div class="pain-arrow">↓</div>
+      <div class="pain-a">이 과정은 수강생 실제 데이터로만 실습합니다</div>
+    </div>
+    <div class="pain-card c2 fade-up d1">
+      <div class="pain-num">02</div>
+      <div class="pain-q">"앱 만드는 게 목표가 됐어요"</div>
+      <div class="pain-arrow">↓</div>
+      <div class="pain-a">목표는 내 매출과 시간. 앱은 수단입니다</div>
+    </div>
+    <div class="pain-card c3 fade-up d2">
+      <div class="pain-num">03</div>
+      <div class="pain-q">"수업 끝나면 혼자가 돼요"</div>
+      <div class="pain-arrow">↓</div>
+      <div class="pain-a">90일 운영 루틴까지 만들고 마칩니다</div>
+    </div>
+  </div>
+</section>
+
+<!-- 과정 소개 -->
+<section style="padding-top:0">
+  <div class="section-label">Our Courses</div>
+  <h2 class="section-title">당신에게 맞는 과정을<br>선택하세요</h2>
+  <div class="courses">
+    <a href="03-1day.html" class="course-card">
+      <div class="course-header course-1d">
+        <div>
+          <div class="course-label">1Day 집중과정</div>
+          <div class="course-title">AI 매출 감사</div>
+          <div class="course-sub">오늘 하루, 3가지 문제를 해결합니다</div>
+        </div>
+        <div class="course-price">
+          <div class="course-price-num">99</div>
+          <div class="course-price-unit">만원</div>
+        </div>
+      </div>
+      <div class="course-body">
+        <ul class="course-features">
+          <li>수강생 실제 데이터로만 실습</li>
+          <li>수업 중 실제 사업에 배포</li>
+          <li>90일 실행 로드맵 완성</li>
+          <li>바이브코딩 앱 1개 제작</li>
+        </ul>
+        <div class="course-link">자세히 보기</div>
+      </div>
+    </a>
+    <a href="04-5day.html" class="course-card">
+      <div class="course-header course-5d">
+        <div>
+          <div class="course-label">5Day 심화과정</div>
+          <div class="course-title">AI 비즈니스<br>시스템 전환</div>
+          <div class="course-sub">5일 후 사업이 AI와 함께 돌아갑니다</div>
+        </div>
+        <div class="course-price">
+          <div class="course-price-num" style="color:#4CC98E">890</div>
+          <div class="course-price-unit">만원</div>
+        </div>
+      </div>
+      <div class="course-body">
+        <ul class="course-features">
+          <li>진단 → 설계 → 구축 → 검증 → 운영</li>
+          <li>바이브코딩 앱 5개 제작</li>
+          <li>에이전트 시스템 3개 배포</li>
+          <li>일·주·월 운영 루틴 완성</li>
+        </ul>
+        <div class="course-link">자세히 보기</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- 프로세스 -->
+<section style="padding-top:0;padding-bottom:88px">
+  <div class="process">
+    <div class="process-title">수강생 여정</div>
+    <div class="process-sub">신청부터 90일 성과까지 자동으로 연결됩니다</div>
+    <div class="process-steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-title">신청 + 설문</div>
+        <div class="step-desc">사전 설문으로 강사가 내 사업을 미리 분석</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-title">수업 당일</div>
+        <div class="step-desc">내 실제 데이터로 실습 → 수업 중 실제 배포</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-title">수료 + 루틴</div>
+        <div class="step-desc">90일 실행 로드맵과 운영 루틴 확정</div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-title">90일 팔로업</div>
+        <div class="step-desc">30·60·90일 점검으로 혼자서도 운영 가능</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 핵심 철학 -->
+<section style="padding-top:0;padding-bottom:88px">
+  <div class="philosophy">
+    <div class="philosophy-quote">
+      "도구를 배우는 교육이 아닙니다.<br>
+      <em>판단 기준</em>을 가르칩니다.<br>
+      도구가 바뀌어도 기준은 남습니다."
+    </div>
+    <div class="philosophy-author">— AI나침반 교육 철학</div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="padding-top:0;padding-bottom:88px">
+  <div class="cta-section">
+    <p class="section-label">무료 설명회</p>
+    <h2 class="cta-title">60분으로 결정하세요</h2>
+    <p class="cta-sub">과정 산출물 라이브 시연 + 내 사업에 맞는지 직접 확인합니다</p>
+    <a href="02-seminar.html" class="btn-primary">무료 설명회 신청 →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">AI나침반</div>
+  <p class="footer-copy">© 2026 AI나침반. 소상공인·1인기업을 위한 AI 비즈니스 전환 교육</p>
+</footer>
+
+<script>
+// 스크롤 애니메이션
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting) e.target.classList.add('visible');
+  });
+},{threshold:0.1});
+document.querySelectorAll('.pain-card,.course-card').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
